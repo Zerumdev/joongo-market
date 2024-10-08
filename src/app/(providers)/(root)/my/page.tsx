@@ -31,15 +31,14 @@ function MyDeals({ deals }: DealsListProps) {
                 className="object-cover absolute h-full w-full"
               />
             </div>
-            {deals &&
-              deals.map((deal) => (
-                <ul key={deal.id} className="grid gap-y-2">
-                  <li className="text-sm font-black">{deal.title}</li>
-                  <li className="font-extrabold">{deal.price}</li>
-                  <li className="text-sm font-semibold">{deal.location}</li>
-                  <li className="text-xs">관심 22</li>
-                </ul>
-              ))}
+            {deals.map((deal) => (
+              <ul key={deal.id} className="grid gap-y-2">
+                <li className="text-sm font-black">{deal.title}</li>
+                <li className="font-extrabold">{deal.price}</li>
+                <li className="text-sm font-semibold">{deal.location}</li>
+                <li className="text-xs">관심 22</li>
+              </ul>
+            ))}
           </Link>
         </li>
       </ul>

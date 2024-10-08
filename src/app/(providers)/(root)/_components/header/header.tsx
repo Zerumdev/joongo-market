@@ -49,7 +49,7 @@ function Header() {
           로그아웃
         </Link>
         {/* ) : ( */}
-        <div>
+        {/* <div>
           <Link
             href="/auth/log_in"
             className="text-[15px] mr-4 text-gray-800 font-semibold"
@@ -62,7 +62,7 @@ function Header() {
           >
             회원가입
           </Link>
-        </div>
+        </div> */}
         {/* ))} */}
       </div>
     </header>

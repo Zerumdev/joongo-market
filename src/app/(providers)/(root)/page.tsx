@@ -1,16 +1,26 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
 import Link from "next/link";
 import React from "react";
 import Deal from "../../../../types/deal.types";
 import supabase from "../../../../supabase/supabase.client";
+import { useQuery } from "@tanstack/react-query";
 
 interface DealsListProps {
-  deals: Deal[];
+  deals: Deal;
 }
 
-function HomePage({ deals }: DealsListProps) {
-  supabase.from("deals").select("*");
-
+function HomePage({ deals: passedDeals }: DealsListProps) {
+  // const [deals, setDeals] = useState<Tables<"deals">[]>(passedDeals);
+  const { data: deals } = useQuery({
+    queryKey: ["deals"],
+    queryFn: async () =>
+      await supabase
+        .from("deals")
+        .select()
+        .then((response) => response.data),
+    // initialData: passedDeals,
+  });
   return (
     <main className="px-5 lg:px-8 flex flex-col grow w-full items-stretch py-6 lg:py-10 max-w-screen-lg mx-auto">
       <h1 className="font-extrabold text-2xl text-left mt-10">전체 판매글</h1>
@@ -33,7 +43,7 @@ function HomePage({ deals }: DealsListProps) {
               deals.map((deal) => (
                 <ul key={deal.id} className="grid gap-y-2">
                   <li className="text-sm font-black">{deal.title}</li>
-                  <li className="font-extrabold">{deal.price}</li>
+                  <li className="font-extrabold">{deal.price}₩</li>
                   <li className="text-sm font-semibold">{deal.location}</li>
                   <li className="text-xs">관심 22</li>
                 </ul>
