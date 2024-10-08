@@ -1,10 +1,10 @@
 import React, { PropsWithChildren } from "react";
-import Headers from "./_components/header/header";
+import Header from "./_components/header/header";
 
 function RootLayout({ children }: PropsWithChildren) {
   return (
     <div id="root-layout">
-      <Headers />
+      <Header />
       {children}
     </div>
   );
